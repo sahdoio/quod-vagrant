@@ -19,19 +19,14 @@ install_commom_packages()
 
 install_php_packages()
 {
-  sudo apt-get install apache2
-  sudo systemctl start apache2.service
-
   which php > /dev/null
   if [ $? -ne 0 ]; then
-    export LC_ALL=en_US.UTF-8 &&
-    export LANG=en_US.UTF-8 &&
-    sudo apt-get install software-properties-common &&
-    sudo add-apt-repository ppa:ondrej/php &&
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository ppa:ondrej/php
     sudo apt-get update
-    
+
     sudo apt-get -y install php7.3
-    php_packages=(libapache2-mod-php php7.3-cli php7.3-cgi php7.3-soap php7.3-xml php7.3-common php7.3-json php7.3-mysql php7.3-mbstring php7.3-mcrypt php7.3-zip php7.3-fpm php7.3-gd)
+    php_packages=(libapache2-mod-php php-cli php-cgi php-soap php-xml php-common php-json php-mysql php-mbstring php-mcrypt php-zip php-fpm php-gd)
 
     sudo apt-get -y install ${php_packages[@]}
     sudo a2enmod proxy_fcgi setenvif
@@ -186,13 +181,13 @@ install_client_tools()
 echo "###########################"
 echo "Replacing resolv.conf"
 echo "###########################"
-#configure_resolvconf
+configure_resolvconf
 echo "###########################"
 
 echo "###########################"
 echo "Installing common packages..."
 echo "###########################"
-#install_commom_packages
+install_commom_packages
 echo "###########################"
 
 
@@ -205,43 +200,43 @@ echo "###########################"
 echo "###########################"
 echo "Installing Composer..."
 echo "###########################"
-#install_composer
+install_composer
 echo "###########################"
 
 echo "###########################"
 echo "Installing Docker..."
 echo "###########################"
-#install_docker
+install_docker
 echo "###########################"
 
 echo "###########################"
 echo "Installing Node and Yarn..."
 echo "###########################"
-#install_node_yarn
+install_node_yarn
 echo "###########################"
 
 echo "###########################"
 echo "Installing Ansible..."
 echo "###########################"
-#install_ansible
+install_ansible
 echo "###########################"
 
 echo "###########################"
 echo "Installing g++ and other missing stuffs"
 echo "###########################"
-#install_gplusplus
+install_gplusplus
 echo "###########################"
 
 echo "###########################"
 echo "Installing MySQL"
 echo "###########################"
-#install_mysql
+install_mysql
 echo "###########################"
 
 echo "###########################"
 echo "Installing Client Tools"
 echo "###########################"
-#install_client_tools
+install_client_tools
 echo "###########################"
 
 sudo systemctl stop apache2
