@@ -190,7 +190,6 @@ echo "###########################"
 install_commom_packages
 echo "###########################"
 
-
 echo "###########################"
 echo "Installing PHP packages..."
 echo "###########################"

@@ -41,6 +41,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8000, host: 8090, auto_correct: true
   config.vm.network "forwarded_port", guest: 8001, host: 8091, auto_correct: true
   config.vm.network "forwarded_port", guest: 8002, host: 8092, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8080, host: 8093, auto_correct: true
   config.vm.network "forwarded_port", guest: 443, host: 4430, auto_correct: true
   config.vm.network "forwarded_port", guest: 3306, host: 33060, auto_correct: true
 
@@ -65,7 +66,7 @@ Vagrant.configure("2") do |config|
   # Example for VirtualBox:
   #
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "ConsumerPortalVM"
+    vb.name = "ConsumerPortalBaseVM"
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
@@ -73,12 +74,6 @@ Vagrant.configure("2") do |config|
 	vb.memory = 2048
 	vb.cpus = 4
   end
-  # copy public key local to vagrant  
-  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
-  # copy private key local to vagrant 
-  config.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
-  # copy public key to authorized keys
-  config.vm.provision "shell", inline: "cat ~vagrant/.ssh/id_rsa.pub >> ~vagrant/.ssh/authorized_keys"
   # exec quod script
   config.vm.provision :shell, path: "bootstrap.sh"
 end
