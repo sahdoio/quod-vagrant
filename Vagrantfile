@@ -42,6 +42,13 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8001, host: 8091, auto_correct: true
   config.vm.network "forwarded_port", guest: 8002, host: 8092, auto_correct: true
   config.vm.network "forwarded_port", guest: 8080, host: 8093, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8081, host: 8094, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8082, host: 8095, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8091, host: 8096, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8092, host: 8097, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8093, host: 8098, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8094, host: 8099, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8095, host: 9000, auto_correct: true
   config.vm.network "forwarded_port", guest: 443, host: 4430, auto_correct: true
   config.vm.network "forwarded_port", guest: 3306, host: 33060, auto_correct: true
 
@@ -71,7 +78,7 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-	vb.memory = 2048
+	vb.memory = 3072
 	vb.cpus = 4
   end
   # exec quod script
